@@ -261,9 +261,10 @@ textarea {
   }
 }
 
+/* your styles */
 body {
 
-  font-family: arial, sans-serif;
+  font-family: helvetica, arial, sans-serif;
 
   margin: 2em;
 
@@ -279,72 +280,43 @@ h1 {
 }
 
 
-canvas {
+
+video {
+
+  clear: both;
 
   display: block;
 
-  width: 28px;
-
-  height: 28px;
-
-  margin: 10px auto 5px auto;
-
-  zoom: 6;
-
-}
-
-p#prediction {
-
-  font-size: 20pt;
-
   margin: 10px;
 
-  text-align: center;
+  background: #000000;
+
+  width: 640px;
+
+  height: 480px;
 
 }
 
+button {
 
-p#prediction.correct {
-
-  border: 3px solid #00ff00;
-
-  color: #00ff00;
-
-  font-size: 100pt;
-
-}
-
-
-p#prediction.wrong {
-
-  border: 3px solid #ff0000;
-
-  color: #ff0000;
-
-  font-size: 100pt;
-
-}
-
-p {
-
-  margin: 5px;
-
-}
-
-
-.box {
-
-  width: 45%;
-
-  margin: 1%;
-
-  border: 1px dashed #cdcdcd;
-
-  display: inline-block;
-
-  min-height: 400px;
-
-  text-align: center;
+  padding: 10px;
 
   float: left;
+
+  margin: 5px 3px 5px 10px;
+
+}
+
+
+.removed {
+
+  display: none;
+
+}
+
+
+#status {
+
+  font-size:150%;
+
 }
