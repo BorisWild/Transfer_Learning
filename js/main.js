@@ -204,7 +204,6 @@ async function trainAndPredict() {
   predictLoop();
 }
 
-
 function logProgress(epoch, logs) {
   console.log('Data for epoch ' + epoch, logs);
 }
@@ -244,27 +243,20 @@ function predictLoop() {
 
 }
 
-
-/**
-
- * Purge data and start over. Note this does not dispose of the loaded
-
- * MobileNet model and MLP head tensors as you will need to reuse
-
- * them to train a new model.
-
- **/
- // Stop any currently running prediction loops by setting ‘predict’ to false.
+// Stop any currently running prediction loops by setting ‘predict’ to false.
 //
 // Delete all content in the ‘examplesCount' array by using the ‘splice(0)’ method you learned in prior chapters.
 //
 // Go through all the currently recorded ‘trainingDataInputs’ and ensure that you dispose of each tensor contained within it in order to free up memory again.
 //
 // Next Call ‘splice(0)’ on both the ‘trainingDataInputs’ and ‘trainingDataOutputs’ arrays to clear those too.
-// Note: If you had called ‘splice(0)’ on the ‘trainingDataInputs’ array before disposing of the tensors contained within, the tensors would be unreachable but still in memory and not disposed of, which could cause a memory leak.
+// Note: If you had called ‘splice(0)’ on the ‘trainingDataInputs’ array before disposing of the tensors contained within,
+// the tensors would be unreachable but still in memory and not disposed of, which could cause a memory leak.
 //
 // Set the status text to something appropriate and print out the tensors left in memory as a sanity check.
-// Remember that since the MobileNet model and the multi-layer perceptron are not yet disposed of, a few hundred tensors will still be left in the device memory which is expected. This allows you to reuse them with new training data if you decide to train the model again after a reset.
+// Remember that since the MobileNet model and the multi-layer perceptron are not yet disposed of,
+// a few hundred tensors will still be left in the device memory which is expected.
+// This allows you to reuse them with new training data if you decide to train the model again after a reset.
 function reset() {
 
   predict = false;
@@ -288,3 +280,8 @@ function reset() {
   console.log('Tensors in memory: ' + tf.memory().numTensors);
 
 }
+
+// Currently, if you want to use the resulting trained model, you will need to load two models:
+//  The mobilenet base model used to generate the feature vectors
+//  The trained multilayer perceptron head you just trained
+// If the base model was in fact a layers model, you could combine them after training is complete to save just one model.
