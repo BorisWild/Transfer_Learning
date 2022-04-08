@@ -56,7 +56,7 @@ async function loadMobileNetFeatureModel() {
     // color channels (3, since the model expects RGB images). You may then log the resulting shape
     // of the tensor (using ‘answer.shape’) to help you understand the size of the image feature vector this model produces as an output.
     let answer = mobilenet.predict(tf.zeros([1, MOBILE_NET_INPUT_HEIGHT, MOBILE_NET_INPUT_WIDTH, 3]));
-    console.log(answer.shape);
+    console.log(answer.shape); //1024 features shown
   });
 }
 
